@@ -15,7 +15,7 @@ And you, who are you? Tell us a bit about yourselves!
 	- Favorite song:
 	- Desirable grade in Matam:
 
-2.	- Second student's name:
-	- Favorite singer:
-	- Favorite song:
-	- Desirable grade in Matam:
+2.	- Second student's name: Yuval Yudcovich
+	- Favorite singer: Eyal golan
+	- Favorite song: End of all strory
+	- Desirable grade in Matam: 100
