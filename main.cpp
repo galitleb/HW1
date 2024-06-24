@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
     if (argv[1] == "format") {
         format(in_file,out_file);
     }
-    if (argv[1] == "hash")) {
+    if (argv[1] == "hash") {
         hash(in_file,out_file);
     }
     if (argv[1] == "compress") {
