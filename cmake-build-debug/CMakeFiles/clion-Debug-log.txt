@@ -1,0 +1,4 @@
+"C:\Program Files\CLion 2023.2.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/CLion 2023.2.1/bin/ninja/win/x64/ninja.exe" "-DCMAKE_C_FLAGS=-Wall -Werror -pedantic-errors -lm -g" -G Ninja -S C:\TECNION\Matam\HW1\MATAM_HW1 -B C:\TECNION\Matam\HW1\MATAM_HW1\cmake-build-debug
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: C:/TECNION/Matam/HW1/MATAM_HW1/cmake-build-debug
