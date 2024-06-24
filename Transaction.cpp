@@ -13,3 +13,9 @@ void TransactionDumpInfo(const Transaction& transaction, ofstream& file){
     std::cout << "ransaction Value:" << transaction.value << std:: endl;
 }
 
+
+string TransactionHashedMessage(const Transaction& transaction){
+
+    return hash(transaction.value , transaction.sender , transaction.receiver);
+}
+
