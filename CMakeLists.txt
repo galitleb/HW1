@@ -7,4 +7,6 @@ add_executable(MATAM_HW1 main.cpp
         Transaction.h
         BlockChain.h
         Transaction.cpp
-        Utilities.h)
+        Utilities.h
+        BlockChain.cpp
+        Utilities.cpp)

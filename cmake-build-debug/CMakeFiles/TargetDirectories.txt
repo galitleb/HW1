@@ -1,3 +1,3 @@
-C:/TECNION/Matam/HW1/MATAM_HW1/cmake-build-debug/CMakeFiles/MATAM_HW1.dir
-C:/TECNION/Matam/HW1/MATAM_HW1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/TECNION/Matam/HW1/MATAM_HW1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/galitlebedev/Desktop/HW1/cmake-build-debug/CMakeFiles/MATAM_HW1.dir
+/Users/galitlebedev/Desktop/HW1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/galitlebedev/Desktop/HW1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -3,7 +3,6 @@
 
 #include <string>
 #include <fstream>
-
 #include "Transaction.h"
 
 using std::string;
@@ -20,7 +19,17 @@ typedef unsigned int (*updateFunction)(unsigned int);
  *
 */
 struct BlockChain {
-    // You may add any fields you believe are necessary
+    Transaction transaction ;
+    std::string timestamp;
+    BlockChain* next ;
+
+    //  Constructor to initialize the BlockChain members
+    BlockChain( const Transaction &transaction ,string timestampI) :
+            transaction(transaction), timestamp(timestampI),next(nullptr){};
+
+    BlockChain( const Transaction &transaction ,string timestampI ,BlockChain* nextI) :
+            transaction(transaction), timestamp(timestampI),next(nextI){};
+
 };
 
 

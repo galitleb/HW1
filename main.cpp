@@ -29,8 +29,6 @@ void verify(ifstream &source, ifstream &target) {
     else std::cout << "Verification failed" << std::endl;
 }
 int main(int argc, char **argv) {
-
-    //  std::cout << "Hello, World!" << std::endl;
     if(argc != 4){
         getErrorMessage();
         std::cout << "Usage: Usage: ./mtm_blockchain <op> <source> <target>" << std::endl;
