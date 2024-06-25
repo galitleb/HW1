@@ -37,13 +37,14 @@ void BlockChainAppendTransaction(
 void BlockChainDump(const BlockChain& blockChain, ofstream& file){
     const BlockChain* block_ptr = &blockChain;
     int i = 1;
-    file << "BlockChain Info:" << std::endl;
+    file << "BlockChain Info:";
     while(block_ptr != nullptr){
-        file << i << "." << std::endl;
+
+        file << std::endl << i << "." << std::endl;
         file << "Sender Name: " << block_ptr->transaction.sender << std::endl;
         file << "Receiver Name: " << block_ptr->transaction.receiver << std::endl;
         file << "Transaction Value: " << block_ptr->transaction.value << std::endl;
-        file << "timestamp: " << block_ptr->transaction.value << std::endl;
+        file << "timestamp: " << block_ptr->transaction.value;
         block_ptr = block_ptr->next;
     }
 }
@@ -56,6 +57,7 @@ bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file)
         std::getline(file,file_line);
         if(!TransactionVerifyHashedMessage(block_ptr->transaction,file_line)) return false;
         block_ptr = block_ptr->next;
+
     }
     return true;
 }
