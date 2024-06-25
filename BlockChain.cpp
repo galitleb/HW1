@@ -34,3 +34,16 @@ void BlockChainAppendTransaction(
     transaction.receiver=receiver;
     BlockChain new_block =BlockChain(transaction,timestamp,&blockChain);
 }
+void BlockChainDump(const BlockChain& blockChain, ofstream& file){
+    const BlockChain* block_ptr = &blockChain;
+    int i = 1;
+    file << "BlockChain Info:" << std::endl;
+    while(block_ptr != nullptr){
+        file << i << "." << std::endl;
+        file << "Sender Name: " << block_ptr->transaction.sender << std::endl;
+        file << "Receiver Name: " << block_ptr->transaction.receiver << std::endl;
+        file << "Transaction Value: " << block_ptr->transaction.value << std::endl;
+        file << "timestamp: " << block_ptr->transaction.value << std::endl;
+        block_ptr = block_ptr->next;
+    }
+}
