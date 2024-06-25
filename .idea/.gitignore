@@ -6,3 +6,39 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Ignore Visual Studio Code files
+.vscode/
+
+# Ignore JetBrains IDE files
+.idea/
+
+# Ignore macOS directory attributes
+.DS_Store
+
+# Ignore compiled binaries in bin/ directory
+bin/
+
+# Ignore generated documentation
+doc/
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+
+# Ignore backup files
+*.bak
+
+# Ignore dependency directories
+dependencies/
+
+# Ignore generated files during testing
+test_results/
+
+# Ignore environment-specific files
+*.env
+
+# Ignore configuration files with sensitive information
+config.json
+#
