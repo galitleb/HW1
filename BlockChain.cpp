@@ -17,8 +17,7 @@ void BlockChainAppendTransaction(
         BlockChain& blockChain,
         const Transaction& transaction,
         const string& timestamp
-)
-{
+){
     BlockChain new_block = BlockChain(transaction,timestamp,&blockChain);
     blockChain = new_block;
 }
@@ -29,7 +28,7 @@ void BlockChainAppendTransaction(
         const string& sender,
         const string& receiver,
         const string& timestamp
-){
+        ){
     Transaction transaction;
     transaction.value=value;
     transaction.receiver=sender;
@@ -52,14 +51,23 @@ void BlockChainDump(const BlockChain& blockChain, ofstream& file){
     }
 }
 
-bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file)
-{
+bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file){
     const BlockChain* block_ptr = &blockChain;
     string file_line;
     while (!file.eof()){
         std::getline(file,file_line);
-        if(!TransactionVerifyHashedMessage(block_ptr->transaction,file_line)) return false;
+        if(!TransactionVerifyHashedMessage(block_ptr->transaction,file_line)) {
+            return false;
+        }
         block_ptr = block_ptr->next;
     }
     return true;
+}
+
+void BlockChainTransform(BlockChain& blockChain, updateFunction function) {
+    BlockChain *block_ptr = &blockChain;
+    while (block_ptr != nullptr) {
+        block_ptr->transaction.value = function(block_ptr->transaction.value);
+        block_ptr = block_ptr->next;
+    }
 }
