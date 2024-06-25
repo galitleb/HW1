@@ -2,6 +2,7 @@
 // Created by Galit Lebedev on 24/06/2024.
 //
 #include "BlockChain.h"
+
 int BlockChainGetSize(const BlockChain& blockChain){
     int count = 0;
     const BlockChain* block_ptr = &blockChain;
@@ -18,7 +19,8 @@ void BlockChainAppendTransaction(
         const string& timestamp
 )
 {
-    BlockChain new_block =BlockChain(transaction,timestamp,&blockChain);
+    BlockChain new_block = BlockChain(transaction,timestamp,&blockChain);
+    blockChain = new_block;
 }
 
 void BlockChainAppendTransaction(
@@ -32,14 +34,15 @@ void BlockChainAppendTransaction(
     transaction.value=value;
     transaction.receiver=sender;
     transaction.receiver=receiver;
-    BlockChain new_block =BlockChain(transaction,timestamp,&blockChain);
+    BlockChain new_block = BlockChain(transaction,timestamp,&blockChain);
+    blockChain = new_block;
 }
+
 void BlockChainDump(const BlockChain& blockChain, ofstream& file){
     const BlockChain* block_ptr = &blockChain;
     int i = 1;
     file << "BlockChain Info:";
     while(block_ptr != nullptr){
-
         file << std::endl << i << "." << std::endl;
         file << "Sender Name: " << block_ptr->transaction.sender << std::endl;
         file << "Receiver Name: " << block_ptr->transaction.receiver << std::endl;
@@ -57,7 +60,6 @@ bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file)
         std::getline(file,file_line);
         if(!TransactionVerifyHashedMessage(block_ptr->transaction,file_line)) return false;
         block_ptr = block_ptr->next;
-
     }
     return true;
 }
