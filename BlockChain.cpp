@@ -47,3 +47,15 @@ void BlockChainDump(const BlockChain& blockChain, ofstream& file){
         block_ptr = block_ptr->next;
     }
 }
+
+bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file)
+{
+    const BlockChain* block_ptr = &blockChain;
+    string file_line;
+    while (!file.eof()){
+        std::getline(file,file_line);
+        if(!TransactionVerifyHashedMessage(block_ptr->transaction,file_line)) return false;
+        block_ptr = block_ptr->next;
+    }
+    return true;
+}
