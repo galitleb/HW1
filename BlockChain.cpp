@@ -5,7 +5,7 @@
 
 int BlockChainGetSize(const BlockChain& blockChain){
     int count = 0;
-    const BlockChain* block_ptr = &blockChain;
+    Block* block_ptr = blockChain.head;
     while(block_ptr != nullptr){
         count++;
         block_ptr = block_ptr->next;
@@ -18,8 +18,8 @@ void BlockChainAppendTransaction(
         const Transaction& transaction,
         const string& timestamp
 ){
-    BlockChain new_block = BlockChain(transaction,timestamp,&blockChain);
-    blockChain = new_block;
+    Block* New_Block = new Block(transaction,timestamp,blockChain.head);
+    blockChain.head = New_Block;
 }
 
 void BlockChainAppendTransaction(
@@ -33,12 +33,13 @@ void BlockChainAppendTransaction(
     transaction.value=value;
     transaction.receiver=sender;
     transaction.receiver=receiver;
-    BlockChain new_block = BlockChain(transaction,timestamp,&blockChain);
-    blockChain = new_block;
+
+    Block* New_Block = new Block(transaction,timestamp,blockChain.head);
+    blockChain.head = New_Block;
 }
 
 void BlockChainDump(const BlockChain& blockChain, ofstream& file){
-    const BlockChain* block_ptr = &blockChain;
+    Block* block_ptr = blockChain.head;
     int i = 1;
     file << "BlockChain Info:";
     while(block_ptr != nullptr){
@@ -52,7 +53,7 @@ void BlockChainDump(const BlockChain& blockChain, ofstream& file){
 }
 
 bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file){
-    const BlockChain* block_ptr = &blockChain;
+    Block* block_ptr = blockChain.head;
     string file_line;
     while (!file.eof()){
         std::getline(file,file_line);
@@ -65,7 +66,7 @@ bool BlockChainVerifyFile(const BlockChain& blockChain, std::ifstream& file){
 }
 
 void BlockChainTransform(BlockChain& blockChain, updateFunction function) {
-    BlockChain *block_ptr = &blockChain;
+    Block* block_ptr = blockChain.head;
     while (block_ptr != nullptr) {
         block_ptr->transaction.value = function(block_ptr->transaction.value);
         block_ptr = block_ptr->next;
