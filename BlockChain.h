@@ -18,19 +18,40 @@ typedef unsigned int (*updateFunction)(unsigned int);
  * BlockChain - Defining the new BlockChain Type
  *
 */
-struct BlockChain {
+struct Block {
     Transaction transaction ;
     std::string timestamp;
-    BlockChain* next ;
+    Block* next;
+
+    // Constructor to initialize the Block
+    Block(Transaction transaction,string Input_Time, Block* next) : transaction(transaction),timestamp(Input_Time), next(next) {}
+
+    // Constructor to initialize the Block
+    Block(Transaction transaction,string Input_Time) : transaction(transaction),timestamp(Input_Time), next(nullptr) {}
+
+    // Destructor
+    ~Block(){
+
+    }
+};
+
+struct BlockChain {
+    Block* head;
 
     //  Constructor to initialize the BlockChain members
-    BlockChain( const Transaction &transaction ,string timestampI) :
-            transaction(transaction), timestamp(timestampI),next(nullptr){};
+    BlockChain(Block* block):head(block){}
 
-    BlockChain( const Transaction &transaction ,string timestampI ,BlockChain* nextI) :
-            transaction(transaction), timestamp(timestampI),next(nextI){};
-
+    ~BlockChain() {
+        Block* current = head;
+        while (current != nullptr) {
+            Block* nextBlock = current->next;
+            delete current;
+            current = nextBlock;
+        }
+    }
 };
+
+
 
 
 /**
